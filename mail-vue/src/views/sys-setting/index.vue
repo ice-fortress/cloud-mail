@@ -352,7 +352,7 @@
             </div>
           </div>
 
-          <div class="settings-card about">
+          <div v-if="false" class="settings-card about">
             <div class="card-title">{{ $t('about') }}</div>
             <div class="card-content">
               <div class="concerning-item">
