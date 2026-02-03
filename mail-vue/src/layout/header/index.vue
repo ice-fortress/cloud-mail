@@ -17,7 +17,7 @@
         <Icon icon="solar:moon-linear"/>
       </div>
       <div class="lang-icon icon-item" @click="toggleLang">
-        <Icon icon="mingcute:translate_line"/>
+        <Icon icon="material-symbols:language"/>
       </div>
       <div class="notice icon-item" @click="openNotice">
         <Icon icon="streamline-plump:announcement-megaphone"/>
