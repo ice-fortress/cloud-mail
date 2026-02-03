@@ -16,13 +16,8 @@
       <div v-else class="dark-icon icon-item" @click="openDark($event)">
         <Icon icon="solar:moon-linear"/>
       </div>
-      <div v-if="settingStore.lang === 'zh'" class="lang-icon icon-item" @click="toggleLang">
-        <span class="lang-text">中</span>
-        <Icon icon="material-symbols:language" :width="18" :height="18"/>
-      </div>
-      <div v-else class="lang-icon icon-item" @click="toggleLang">
-        <span class="lang-text">En</span>
-        <Icon icon="material-symbols:language" :width="18" :height="18"/>
+      <div class="lang-icon icon-item" @click="toggleLang">
+        <Icon icon="material-symbols:language"/>
       </div>
       <div class="notice icon-item" @click="openNotice">
         <Icon icon="streamline-plump:announcement-megaphone"/>
@@ -454,18 +449,7 @@ function formatName(email) {
   }
 
   .lang-icon {
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-
-    .lang-text {
-      font-size: 13px;
-      font-weight: 500;
-      line-height: 1;
-      width: 18px;
-      text-align: center;
-    }
+    font-size: 20px;
   }
 
   .avatar {
