@@ -16,6 +16,14 @@
       <div v-else class="dark-icon icon-item" @click="openDark($event)">
         <Icon icon="solar:moon-linear"/>
       </div>
+      <div v-if="settingStore.lang === 'zh'" class="lang-icon icon-item" @click="toggleLang">
+        <span class="lang-text">中</span>
+        <Icon icon="material-symbols:language" :width="18" :height="18"/>
+      </div>
+      <div v-else class="lang-icon icon-item" @click="toggleLang">
+        <span class="lang-text">En</span>
+        <Icon icon="material-symbols:language" :width="18" :height="18"/>
+      </div>
       <div class="notice icon-item" @click="openNotice">
         <Icon icon="streamline-plump:announcement-megaphone"/>
       </div>
@@ -84,6 +92,7 @@ import {computed, ref} from "vue";
 import {useSettingStore} from "@/store/setting.js";
 import {hasPerm} from "@/perm/perm.js"
 import {useI18n} from "vue-i18n";
+import i18n from "@/i18n/index.js";
 import {setExtend} from "@/utils/day.js"
 
 const {t} = useI18n();
@@ -176,7 +185,13 @@ async function copyEmail(email) {
 
 function changeLang(lang) {
   setExtend(lang === 'en' ? 'en' : 'zh-cn')
+  i18n.global.locale.value = lang
   settingStore.lang = lang
+}
+
+function toggleLang() {
+  const newLang = settingStore.lang === 'zh' ? 'en' : 'zh'
+  changeLang(newLang)
 }
 
 function openNotice() {
@@ -436,6 +451,19 @@ function formatName(email) {
 
   .sun-icon {
     font-size: 24px;
+  }
+
+  .lang-icon {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    .lang-text {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+    }
   }
 
   .avatar {
