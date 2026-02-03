@@ -16,12 +16,14 @@
           <el-input :class="settingStore.settings.loginDomain === 0 ? 'email-input' : ''" v-model="form.email"
                     type="text" :placeholder="$t('emailAccount')" autocomplete="off">
             <template #append v-if="settingStore.settings.loginDomain === 0">
-              <div @click.stop="openSelect">
+              <div>
                 <el-select
                     ref="mySelect"
                     v-model="suffix"
                     :placeholder="$t('select')"
                     class="select"
+                    disabled
+                    tabindex="-1"
                 >
                   <el-option
                       v-for="item in domainList"
@@ -30,7 +32,7 @@
                       :value="item"
                   />
                 </el-select>
-                <div style="color: var(--el-text-color-primary)">
+                <div style="color: var(--el-text-color-primary); pointer-events: none;" tabindex="-1">
                   <span>{{ suffix }}</span>
                   <Icon class="setting-icon" icon="mingcute:down-small-fill" width="20" height="20"/>
                 </div>
